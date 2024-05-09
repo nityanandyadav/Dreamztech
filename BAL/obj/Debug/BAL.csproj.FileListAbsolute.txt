@@ -1,0 +1,11 @@
+E:\Test Projects\Nitya\OrderProcessing\BAL\bin\Debug\BAL.dll
+E:\Test Projects\Nitya\OrderProcessing\BAL\bin\Debug\BAL.pdb
+E:\Test Projects\Nitya\OrderProcessing\BAL\bin\Debug\DAL.dll
+E:\Test Projects\Nitya\OrderProcessing\BAL\bin\Debug\DAL.pdb
+E:\Test Projects\Nitya\OrderProcessing\BAL\obj\Debug\BAL.csproj.AssemblyReference.cache
+E:\Test Projects\Nitya\OrderProcessing\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
+E:\Test Projects\Nitya\OrderProcessing\BAL\obj\Debug\BAL.csproj.CopyComplete
+E:\Test Projects\Nitya\OrderProcessing\BAL\obj\Debug\BAL.dll
+E:\Test Projects\Nitya\OrderProcessing\BAL\obj\Debug\BAL.pdb
+E:\Test Projects\Nitya\OrderProcessing\BAL\bin\Debug\Models.dll
+E:\Test Projects\Nitya\OrderProcessing\BAL\bin\Debug\Models.pdb

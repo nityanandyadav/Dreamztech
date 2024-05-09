@@ -1,0 +1,80 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/umd/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>Order Processing</title>
+    <style>
+        .is-invalid ~ .invalid-feedback {
+            color: red !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+          
+            <div class="col-md-6">
+                @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @ViewBag.ErrorMessage
+                    </div>
+                }
+              
+                <div class="card">
+                    <div class="card-header">Enter Your Email</div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("ValidateEmail", "Product", FormMethod.Post, new { @id = "emailForm", @class = "needs-validation", novalidate = "novalidate" }))
+                        {
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" name="email" required="required">
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address.
+                                </div>
+
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Next</button>
+                        }
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+
+
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#emailForm').validate({
+                rules: {
+                    email: {
+                        required: true,
+                        email: true
+                    }
+                },
+                messages: {
+                    email: {
+                        required: "Please enter your email address.",
+                        email: "Please enter a valid email address."
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Product Selection</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                @if (!string.IsNullOrEmpty(TempData["SuccessMessage"] as string))
+                {
+                    <div class="alert alert-success" role="alert">
+                        @TempData["SuccessMessage"]
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(TempData["ErrorMessage"] as string))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @TempData["ErrorMessage"]
+                    </div>
+                }
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Products</h5>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("PlaceOrder", "Product", FormMethod.Post))
+                        {
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Select</th>
+                                        <th>Product Name</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var product in ViewBag.Products)
+                                    {
+                                        <tr>
+                                            <td><input type="checkbox" name="productIds" value="@product.Id" /></td>
+                                            <td>@product.Name</td>
+                                            <td>@product.Price</td>
+                                            <td><input type="number" name="quantities[@product.Id]" value="1" min="1" onchange="calculateTotalPrice(this)" disabled /></td>
+                                            <td class="totalPriceColumn"></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <div class="row justify-content-end">
+                                <div class="col-auto">
+                                    Total Sum: <span id="totalSum"></span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="submitBtn" disabled>Place Order</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Calculate total price for selected products initially
+            $('input[type="checkbox"]:checked').each(function () {
+                var quantity = parseInt($(this).closest('tr').find('input[type="number"]').val());
+                var price = parseFloat($(this).closest('tr').find('td:nth-child(3)').text());
+                var totalPrice = quantity * price;
+                $(this).closest('tr').find('.totalPriceColumn').text(totalPrice.toFixed(2));
+            });
+
+            // Enable/disable submit button based on checkbox selection
+            $('input[type="checkbox"]').change(function () {
+                if (this.checked) {
+                    $(this).closest('tr').find('input[type="number"]').prop('disabled', false);
+                    calculateTotalPrice(this);
+                } else {
+                    $(this).closest('tr').find('input[type="number"]').prop('disabled', true);
+                    $(this).closest('tr').find('.totalPriceColumn').text('');
+                }
+                var anyChecked = $('input[type="checkbox"]:checked').length > 0;
+                $('#submitBtn').prop('disabled', !anyChecked);
+                updateTotalSum();
+            });
+
+            // Update total sum when quantity changes
+            $('input[type="number"]').change(function () {
+                calculateTotalPrice(this);
+            });
+
+            // Update total sum initially
+            updateTotalSum();
+        });
+
+        function calculateTotalPrice(input) {
+            var quantity = parseInt(input.value);
+            var price = parseFloat($(input).closest('tr').find('td:nth-child(3)').text());
+            var totalPrice = quantity * price;
+            $(input).closest('tr').find('.totalPriceColumn').text(totalPrice.toFixed(2));
+            updateTotalSum();
+        }
+
+        function updateTotalSum() {
+            var totalSum = 0;
+            $('.totalPriceColumn').each(function () {
+                var totalPrice = parseFloat($(this).text());
+                if (!isNaN(totalPrice)) {
+                    totalSum += totalPrice;
+                }
+            });
+            $('#totalSum').text(totalSum.toFixed(2));
+        }
+    </script>
+
+</body>
+</html>

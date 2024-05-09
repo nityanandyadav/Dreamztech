@@ -1,0 +1,6 @@
+E:\Test Projects\Nitya\OrderProcessing\Models\bin\Debug\Models.dll
+E:\Test Projects\Nitya\OrderProcessing\Models\bin\Debug\Models.pdb
+E:\Test Projects\Nitya\OrderProcessing\Models\obj\Debug\Models.csproj.AssemblyReference.cache
+E:\Test Projects\Nitya\OrderProcessing\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+E:\Test Projects\Nitya\OrderProcessing\Models\obj\Debug\Models.dll
+E:\Test Projects\Nitya\OrderProcessing\Models\obj\Debug\Models.pdb

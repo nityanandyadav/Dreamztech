@@ -1,0 +1,9 @@
+E:\Test Projects\Nitya\OrderProcessing\DAL\bin\Debug\DAL.dll
+E:\Test Projects\Nitya\OrderProcessing\DAL\bin\Debug\DAL.pdb
+E:\Test Projects\Nitya\OrderProcessing\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+E:\Test Projects\Nitya\OrderProcessing\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\Test Projects\Nitya\OrderProcessing\DAL\obj\Debug\DAL.dll
+E:\Test Projects\Nitya\OrderProcessing\DAL\obj\Debug\DAL.pdb
+E:\Test Projects\Nitya\OrderProcessing\DAL\bin\Debug\Models.dll
+E:\Test Projects\Nitya\OrderProcessing\DAL\bin\Debug\Models.pdb
+E:\Test Projects\Nitya\OrderProcessing\DAL\obj\Debug\DAL.csproj.CopyComplete
